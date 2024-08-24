@@ -107,6 +107,57 @@ Authenticates an existing user.
 - **Success:** `{ token: <JWT> }`
 - **Error:** `{ error: "Invalid credentials" }`
 
+###POST /logout
+Logs out the user by invalidating the JWT token on the client side.
+
+**Request Headers:**
+
+- **Authorization:** Bearer <JWT>
+
+**Response:**
+
+- **Success:** { "message": "Logged out successfully" }
+ - **Error:** { "error": "Failed to log out" }
+
+### `GET /users`
+Retrieves a list of all registered users. This endpoint is typically protected and requires admin privileges.
+
+**Request Headers:**
+
+- `Authorization`: Bearer `<JWT>`
+
+**Response:**
+
+- **Success:**
+  ```json
+  [
+    {
+      "id": "user123",
+      "username": "johnDoe",
+      "email": "john@example.com",
+      "createdAt": "2023-08-22T12:00:00Z"
+    },
+    {
+      "id": "user456",
+      "username": "janeDoe",
+      "email": "jane@example.com",
+      "createdAt": "2023-08-23T15:30:00Z"
+    }
+  ]
+
+###POST /token
+Renews the JWT access token using a refresh token. This is useful when the access token has expired but the user is still logged in.
+
+**Request Body:**
+
+**refreshToken:** String (required)
+
+**Response:**
+
+- **Success:** { "accessToken": "<NewJWT>" }
+- **Error:** { "error": "Invalid refresh token" }
+
+
 ## Best Practices Implemented
 
 - **Input Validation & Sanitization:** All inputs are validated and sanitized to prevent vulnerabilities.
