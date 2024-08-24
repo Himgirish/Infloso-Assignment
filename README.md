@@ -107,7 +107,7 @@ Authenticates an existing user.
 - **Success:** `{ token: <JWT> }`
 - **Error:** `{ error: "Invalid credentials" }`
 
-###POST /logout
+### `POST /logout`
 Logs out the user by invalidating the JWT token on the client side.
 
 **Request Headers:**
@@ -145,12 +145,12 @@ Retrieves a list of all registered users. This endpoint is typically protected a
     }
   ]
 
-###POST /token
+### `POST /token`
 Renews the JWT access token using a refresh token. This is useful when the access token has expired but the user is still logged in.
 
 **Request Body:**
 
-**refreshToken:** String (required)
+- **refreshToken:** String (required)
 
 **Response:**
 
